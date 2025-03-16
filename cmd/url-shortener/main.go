@@ -5,6 +5,7 @@ import (
 	"log/slog"
 	"os"
 	"url-shortener/internal/config"
+	"url-shortener/internal/storage/sqlite"
 )
 
 const (
@@ -23,7 +24,13 @@ func main() {
 	log.Info("starting url-shortener", slog.String("env", cfg.Env))
 	log.Debug("debug messages enabled")
 
-	// TODO: init storage: sqlite3
+	storage, err := sqlite.New(cfg.StorageURL)
+	if err != nil {
+		log.Error("failed to init storage", slog.String("error", err.Error()))
+		os.Exit(1)
+	}
+
+	_ = storage
 
 	// TODO: init router: chi, chi render
 
