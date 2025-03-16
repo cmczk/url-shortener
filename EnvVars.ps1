@@ -1,0 +1,1 @@
+$Env:CONFIG_PATH = "./config/local.yml"

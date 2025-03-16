@@ -1,7 +1,14 @@
 package main
 
+import (
+	"fmt"
+	"url-shortener/internal/config"
+)
+
 func main() {
-	// TODO: init confi: cleanenv
+	cfg := config.MustLoad()
+
+	fmt.Println(cfg)
 
 	// TODO: ini logger: slog
 
