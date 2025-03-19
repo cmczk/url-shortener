@@ -30,7 +30,10 @@ func main() {
 		os.Exit(1)
 	}
 
-	_ = storage
+	err = storage.DeleteURL("google.com")
+	if err != nil {
+		log.Error("cannot get url", slog.String("error", err.Error()))
+	}
 
 	// TODO: init router: chi, chi render
 
